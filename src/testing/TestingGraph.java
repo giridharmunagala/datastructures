@@ -23,7 +23,13 @@ public class TestingGraph {
 		graph.addEdge(grape, orange);
 		graph.addEdge(grape, banana);
 		graph.addEdge(mango, apple);
+		System.out.println("DFS");
 		for(String fruit:graph.depthFirstSearch(orange)) {
+			System.out.println(fruit);
+		}
+		System.out.println();
+		System.out.println("BFS");
+		for(String fruit:graph.breadthFirstSearch(orange)) {
 			System.out.println(fruit);
 		}
 

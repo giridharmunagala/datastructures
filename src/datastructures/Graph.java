@@ -3,6 +3,7 @@ package datastructures;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Graph<E> {
@@ -65,6 +66,32 @@ public class Graph<E> {
 			}
 		}
 		return dfsNodes;
+	}
+	
+	public ArrayList<E> breadthFirstSearch(E bfsStartNode){
+		ArrayList<E> bfsNodes = new ArrayList<E>();
+		LinkedList<E> nodesQueue = new LinkedList<E>();
+		HashMap<E, Boolean> visitedMap = new HashMap<E, Boolean>();
+//		Initialising all visited values to false
+		
+		for(E key:adjacencyList.keySet()) {
+			visitedMap.put(key, false);
+		}
+		nodesQueue.add(bfsStartNode);
+		
+		while(!nodesQueue.isEmpty()) {
+			E currentNode = nodesQueue.remove();
+			if(!visitedMap.get(currentNode)) {
+				bfsNodes.add(currentNode);
+				visitedMap.put(currentNode, true);
+			}
+			for(E edgeNode:adjacencyList.get(currentNode)) {
+				if(!visitedMap.get(edgeNode)) {
+					nodesQueue.add(edgeNode);
+				}
+			}
+		}
+		return bfsNodes;
 	}
 	
 	
